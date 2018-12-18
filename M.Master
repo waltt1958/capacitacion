@@ -1,0 +1,25 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="M.master.vb" Inherits="capacitacion.M" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Capacitacion</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    
+    <form id="form1" runat="server">
+<link rel="stylesheet" title="estilos.css" type="text/css" href="/estilos/estilos.css">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <H5>Hoy es: <%:DateTime.Now()%></H5>
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

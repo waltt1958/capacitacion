@@ -1,0 +1,8 @@
+C:\inetpub\wwwroot\capacitacion\capacitacion\bin\capacitacion.dll
+C:\inetpub\wwwroot\capacitacion\capacitacion\bin\capacitacion.pdb
+C:\inetpub\wwwroot\capacitacion\capacitacion\bin\capacitacion.xml
+C:\inetpub\wwwroot\capacitacion\capacitacion\obj\Debug\capacitacion.Resources.resources
+C:\inetpub\wwwroot\capacitacion\capacitacion\obj\Debug\capacitacion.vbproj.GenerateResource.Cache
+C:\inetpub\wwwroot\capacitacion\capacitacion\obj\Debug\capacitacion.dll
+C:\inetpub\wwwroot\capacitacion\capacitacion\obj\Debug\capacitacion.xml
+C:\inetpub\wwwroot\capacitacion\capacitacion\obj\Debug\capacitacion.pdb
