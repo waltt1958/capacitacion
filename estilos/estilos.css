@@ -11,13 +11,14 @@ body
 
 h1
 	{
-	margin-top: 100px;
+	margin-top:inherit;
 	color: black;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 45px;
 	text-align: center;
 	font-weight: bold;
 	text-decoration: underline;
+    
 }
 
 
@@ -38,6 +39,7 @@ h5
 	font-size: 20px;
 	text-align: right;
 	font-weight: bold;
+    position:absolute;
 }
 
 
