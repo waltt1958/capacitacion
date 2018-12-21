@@ -7,11 +7,37 @@
 
     <h3>Ingrese su legajo y contraseña para continuar</h3>
 
-    <asp:Table ID="Table1" runat="server">
-    <asp:Label ID="Lbllegajo" runat="server" Font-Bold="True" Text="Legajo"></asp:Label>
 
-    <asp:TextBox ID="legajo" runat="server"></asp:TextBox>
 
-</asp:Table>
+    <table style="width: 40%;" align="center" border="2" cellspacing="0" bordercolor="black">
+        <tr>
+            <td width="50%"><asp:Label ID="Lbllegajo" Font-Size="20" runat="server" Font-Bold="True" Text="Legajo"></asp:Label></td>
+            <td width="50%">
+                <asp:TextBox ID="legajo" runat="server"></asp:TextBox>
+  <!--              <asp:CustomValidator id="customValidator1" runat="server" ControlToValidate="legajo" ErrorMessage="Máximo 8 dígitos"  ></asp:CustomValidator>-->
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Complete su legajo" ControlToValidate="legajo" ClientValidationFunction="VerificarCantidad()" ForeColor="Red"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        
+         <tr>
+            <td width="50%"><asp:Label ID="Lblpass" Font-Size="20" runat="server" Font-Bold="True" Text="Contraseña"></asp:Label></td>
+            <td width="50%">
+                <input id="password" type="password" runat="server"/>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Complete la contraseña" ControlToValidate="password" ForeColor="Red"></asp:RequiredFieldValidator>
+
+            </td>
+         </tr> 
+        
+        <tr>
+           <td align="center"> <asp:Button ID="btaceptar" CssClass="button" runat="server" Text="ACEPTAR"></asp:Button></td>
+           <td align="center"><asp:Button ID="btcancelar" CssClass="button" runat="server" Text="CANCELAR"></asp:Button></td>
+        </tr>
+    </table>
+    
+ <script type="text/javascript">
+    function VerificarCantidad(sender, args) {
+        args.IsValid = (args.Value.length >= 9);
+    }
+</script>  
 </asp:Content>
 

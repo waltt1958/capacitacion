@@ -18,8 +18,8 @@
 <td>
     <img src="/img/LogoOCA.png" alt="OCA" align="top" width="200px" />
 </td>
-<td align="left">
-   <p align="right"><b> Hoy es: <%:WeekdayName(Weekday(DateTime.Now()) - 1)%>, <%:DateTime.Now()%></b></p>
+<td align="right">
+   <p><b> Hoy es: <%:WeekdayName(Weekday(DateTime.Now()) - 1)%>, <%:DateTime.Now()%></b></p>
 </td>
 </tr>
 </table>
