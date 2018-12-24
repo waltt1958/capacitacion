@@ -21,7 +21,7 @@
          <tr>
             <td width="50%"><asp:Label ID="Lblpass" Font-Size="20" runat="server" Font-Bold="True" Text="Contraseña"></asp:Label></td>
             <td width="50%">
-                <input id="password" type="password" runat="server"/>
+                <input id="password" type="password" runat="server" maxlength="8" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Complete la contraseña" ControlToValidate="password" ForeColor="Red"></asp:RequiredFieldValidator>
 
             </td>
