@@ -17,7 +17,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Complete su legajo" ControlToValidate="legajo" ClientValidationFunction="VerificarCantidad()" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
         </tr>
-        
+
          <tr>
             <td width="50%"><asp:Label ID="Lblpass" Font-Size="20" runat="server" Font-Bold="True" Text="Contraseña"></asp:Label></td>
             <td width="50%">
@@ -26,7 +26,12 @@
 
             </td>
          </tr> 
-        
+         <tr>
+            <td colspan="2" align="center" style="font-size: 20px">
+                <b>Alta o modificacion de contraseña</b>
+
+            </td>
+        </tr>
         <tr>
            <td align="center"> <asp:Button ID="btaceptar" CssClass="button" runat="server" Text="ACEPTAR"></asp:Button></td>
            <td align="center"><asp:Button ID="btcancelar" CssClass="button" runat="server" Text="CANCELAR"></asp:Button></td>
