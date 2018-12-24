@@ -13,9 +13,8 @@
         <tr>
             <td width="50%"><asp:Label ID="Lbllegajo" Font-Size="20" runat="server" Font-Bold="True" Text="Legajo"></asp:Label></td>
             <td width="50%">
-                <asp:TextBox ID="legajo" runat="server"></asp:TextBox>
-  <!--              <asp:CustomValidator id="customValidator1" runat="server" ControlToValidate="legajo" ErrorMessage="Máximo 8 dígitos"  ></asp:CustomValidator>-->
-                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Complete su legajo" ControlToValidate="legajo" ClientValidationFunction="VerificarCantidad()" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="legajo" runat="server" MaxLength="8"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Complete su legajo" ControlToValidate="legajo" ClientValidationFunction="VerificarCantidad()" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
         </tr>
         
