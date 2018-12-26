@@ -28,8 +28,7 @@
          </tr> 
          <tr>
             <td colspan="2" align="center" style="font-size: 20px">
-                <b>Alta o modificacion de contraseña</b>
-
+                <asp:DynamicHyperLink NavigateUrl="~/modificar.aspx" ID="DynamicHyperLink1"  runat="server">Alta o modificación de contraseña</asp:DynamicHyperLink>
             </td>
         </tr>
         <tr>
