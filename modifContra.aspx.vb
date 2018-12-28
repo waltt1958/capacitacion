@@ -3,10 +3,15 @@ Partial Class modifContra
     Inherits System.Web.UI.Page
 
     Protected Sub btcancelar_Click(sender As Object, e As EventArgs) Handles btcancelar.Click
-        contraVieja.Value = String.Empty
-        password.Value = String.Empty
-        password1.Value = String.Empty
-        contraVieja.Focus()
+        legajo.Text = String.Empty
+        contraVieja.Text = String.Empty
+        password.Text = String.Empty
+        password1.Text = String.Empty
+        legajo.Focus()
+    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        legajo.Focus()
     End Sub
 
 End Class
