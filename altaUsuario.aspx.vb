@@ -13,4 +13,5 @@ Partial Class altaUsuario
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         legajo.Focus()
     End Sub
+
 End Class
