@@ -14,4 +14,5 @@ Partial Class Index
         legajo.Focus()
 
     End Sub
+
 End Class
