@@ -14,4 +14,7 @@ Partial Class modifContra
         legajo.Focus()
     End Sub
 
+    Protected Sub btaceptar_Click(sender As Object, e As EventArgs) Handles btaceptar.Click
+
+    End Sub
 End Class

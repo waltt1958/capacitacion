@@ -1,4 +1,6 @@
 ﻿Imports System.Data.OleDb
+Imports System.Data.OleDb.OleDbDataReader
+
 
 Partial Class altaUsuario
     Inherits System.Web.UI.Page
@@ -20,21 +22,35 @@ Partial Class altaUsuario
         Dim con As New OleDbConnection
         Dim sql As String
         Dim insertar As String
-        Dim resultado As Integer
 
+        sql = "Select * from usuarios where Id_usuario= ?"
 
-        sql = "Select count(*) from usuarios where Id_usuario=" & legajo.Text
-        con.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Server.MapPath("/bbdd/capacitacion.mdb")
+        con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath("/bbdd/capacitacion.accdb")
+
         con.Open()
+        Dim oDataReader As OleDbDataReader
+
         Dim cmd As New OleDbCommand(sql, con)
-        resultado = cmd.ExecuteScalar
-        Response.Write(resultado)
-        If resultado = 0 Then
+        cmd.Parameters.Add(New OleDbParameter("Id_usuario", OleDbType.VarChar, 10))
+        cmd.Parameters("Id_usuario").Value = legajo.Text
+        oDataReader = cmd.ExecuteReader()
+
+        If oDataReader.Read() = False Then
             insertar = "INSERT INTO usuarios VALUES ('" & legajo.Text & "','" & aYnombre.Text & "','" & password.Text & "')"
             Dim cmd1 As New OleDbCommand(insertar, con)
             cmd1.ExecuteNonQuery()
+            legajo.Text = String.Empty
+            aYnombre.Text = String.Empty
+            Response.Write("<script type='text/javascript'> alert('Fue dado de alta exitosamente. Vuelva al inicio e ingrese')</script>")
+
+        Else
+            Response.Write("<script type='text/javascript'> alert('El legajo ingresado ya existe')</script>")
+            legajo.Text = String.Empty
+            aYnombre.Text = String.Empty
 
         End If
+
+        oDataReader.Close()
         con.Close()
 
     End Sub
