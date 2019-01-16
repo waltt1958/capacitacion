@@ -16,7 +16,7 @@
          <tr>
             <td width="50%"><asp:Label ID="lblvieja" Font-Size="20" runat="server" Font-Bold="True" Text="Contraseña anterior"></asp:Label></td>
             <td width="30%" align="center">
-                <asp:TextBox ID="contraVieja" MaxLength="8" runat="server"></asp:TextBox>
+                <asp:TextBox ID="contraVieja" TextMode="Password" MaxLength="8" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Complete la contraseña anterior"  ControlToValidate="contraVieja" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
          </tr>

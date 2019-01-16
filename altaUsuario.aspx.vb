@@ -1,5 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data.OleDb.OleDbDataReader
+Imports Microsoft.VisualBasic
+Imports System.Web.Services.Description
 
 
 Partial Class altaUsuario
@@ -41,9 +43,11 @@ Partial Class altaUsuario
             cmd1.ExecuteNonQuery()
             legajo.Text = String.Empty
             aYnombre.Text = String.Empty
-            Response.Write("<script type='text/javascript'> alert('Fue dado de alta exitosamente. Vuelva al inicio e ingrese')</script>")
-
+            'Response.Write("<script type='text/javascript'> alert('Fue dado de alta exitosamente. Vuelva al inicio e ingrese')</script>")
+            Response.Write("<script>window.alert('Fue dado de alta exitosamente. Recuerde su contraseña');</script>" +
+                           "<script>window.setTimeout(location.href='Default.aspx', 2000);</script>")
         Else
+
             Response.Write("<script type='text/javascript'> alert('El legajo ingresado ya existe')</script>")
             legajo.Text = String.Empty
             aYnombre.Text = String.Empty
@@ -52,6 +56,6 @@ Partial Class altaUsuario
 
         oDataReader.Close()
         con.Close()
-
     End Sub
+
 End Class
