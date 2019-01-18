@@ -3,6 +3,8 @@ Imports System.Data.OleDb.OleDbConnection
 Imports System.Data.DataTable
 Imports System.Data.OleDb.OleDbDataAdapter
 Imports System.Data
+Imports Microsoft.VisualBasic
+
 
 Partial Class modifContra
     Inherits System.Web.UI.Page
@@ -20,41 +22,60 @@ Partial Class modifContra
     End Sub
 
     Protected Sub btaceptar_Click(sender As Object, e As EventArgs) Handles btaceptar.Click
-        Dim sqlModifica As String
-        Dim sqlBuscar As String
-        Dim da As OleDbDataAdapter
-        Dim dt As DataSet
+
         Dim con As New OleDbConnection
+        Dim sql As String
+        Dim modificar As String
+        Dim oDataReader As OleDbDataReader
 
-        sqlBuscar = " select * from usuarios where Id_usuario=" & legajo.Text
+        sql = "Select * from usuarios where Id_usuario= ?"
         con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Server.MapPath("/bbdd/capacitacion.accdb")
+        con.Open()
 
-        ' Dim cmd As New OleDbCommand(sqlBuscar, con)
-        ' cmd.Parameters.Add(New OleDbParameter("Id_usuario", OleDbType.VarChar, 10))
-        ' cmd.Parameters("Id_usuario").Value = legajo.Text
+        Dim cmd As New OleDbCommand(sql, con)
+        cmd.Parameters.Add(New OleDbParameter("Id_usuario", OleDbType.VarChar, 10))
+        cmd.Parameters("Id_usuario").Value = legajo.Text
+        oDataReader = cmd.ExecuteReader()
 
-        da = New OleDbDataAdapter(sqlBuscar, con)
-        dt = New DataSet
-        da.Fill(dt, "usuarios")
+        If oDataReader.Read() = True Then
+            Response.Write("              esta lleno")
+        Else
+            Response.Write("           esta vacio")
+        End If
+        Response.Write(oDataReader("aYnombre")) ' & "    " & oDataReader("aYnombre") & "     " & oDataReader("contravieja"))
+        If oDataReader.Read() = False Then
 
+            ' Response.Write(oDataReader("aYnombre")) ' & "111111" & "  " & contraVieja.Text & "   " & legajo.Text)
 
-        Response.Write(dt.Tables("usuarios").Rows(0).Item("Id_usuario"))
+            oDataReader.Close()
+            con.Close()
+            ' Response.Write("<script>window.alert('Nunca se ha registrado con ese legajo. ');</script>" +
+            '  "<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
 
+        ElseIf (oDataReader("Id_usuario") = legajo.Text) And (oDataReader("contrasena") = contraVieja.Text) Then
 
+            Response.Write(oDataReader("aYnombre") & "2222222" & "  " & contraVieja.Text & "   " & legajo.Text)
 
-        'Dim cmd As New OleDbCommand(sqlBuscar, con)
-        'cmd.Parameters.Add(New OleDbParameter("Id_usuario", OleDbType.VarChar, 10))
-        'cmd.Parameters("Id_usuario").Value = legajo.Text
-        'odataReader = cmd.ExecuteReader()
+            modificar = "UPDATE usuarios SET contrasena = '" & password.Text & " 'where Id_usuario = ?"
+            Dim cmd1 As New OleDbCommand(modificar, con)
+            cmd1.Parameters.Add(New OleDbParameter("Id_usuario", OleDbType.VarChar, 10))
+            cmd1.Parameters("Id_usuario").Value = legajo.Text
+            cmd1.ExecuteNonQuery()
+            oDataReader.Close()
+            con.Close()
+            'Response.Write("<script>window.alert('Su contraseña fue actualizada con éxito');</script>" +
+            '"<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
 
-        'If odataReader.Read() = False Then
-        ' Response.Write("<script>window.alert('Nunca se ha registrado con ese legajo. ');</script>" +
-        '   "<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
-        'ElseIf odataReader("Id_usuario") = legajo.Text And odataReader("contrasena") = contraVieja.Text Then
+        Else
+            Response.Write(oDataReader("contrasena") & "333333" & "  " & contraVieja.Text & "   " & legajo.Text)
+            oDataReader.Close()
+            con.Close()
+            ' Response.Write("<script>window.alert('La contraseña vieja que ingresó no coincide con la que tenía registrada. Vuelva a intentarlo ');</script>" +
+            '   "<script>window.setTimeout(location.href='modifContra.aspx', 2000);</script>")
 
+        End If
 
-
-        'End If
-
+        oDataReader.Close()
+        con.Close()
     End Sub
 End Class
