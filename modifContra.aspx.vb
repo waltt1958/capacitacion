@@ -1,7 +1,5 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data.OleDb.OleDbConnection
-Imports System.Data.DataTable
-Imports System.Data.OleDb.OleDbDataAdapter
 Imports System.Data
 Imports Microsoft.VisualBasic
 
@@ -38,7 +36,8 @@ Partial Class modifContra
         oDataReader = cmd.ExecuteReader()
 
         If (Not oDataReader.HasRows) Then
-
+            Response.Write("<script>window.alert('No está dado de alta en el sistema.');</script>" +
+            "<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
             oDataReader.Close()
             con.Close()
         Else
@@ -49,7 +48,6 @@ Partial Class modifContra
 
                 If Equals(Trim(valorContra), Trim(valorPass)) Then
 
-                    Response.Write("entro para modificar contraseña")
                     modificar = "UPDATE usuarios SET contrasena = '" & password.Text & " 'where Id_usuario = ?"
                     Dim cmd1 As New OleDbCommand(modificar, con)
                     cmd1.Parameters.Add(New OleDbParameter("Id_usuario", OleDbType.VarChar, 10))
@@ -69,6 +67,8 @@ Partial Class modifContra
             con.Close()
 
         End If
+        oDataReader.Close()
+        con.Close()
 
     End Sub
 End Class
