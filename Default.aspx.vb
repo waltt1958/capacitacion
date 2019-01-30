@@ -51,6 +51,7 @@ Partial Class Index
 
                 If Equals(Trim(valorContra), Trim(valorPass)) Then
 
+                    Session("legajo") = legajo.Text
                     Response.Write("<script>window.setTimeout(location.href='cursos.aspx', 2000);</script>")
 
                 Else

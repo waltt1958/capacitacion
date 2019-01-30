@@ -19,7 +19,7 @@
     <img src="/img/LogoOCA.png" alt="OCA" align="top" width="200px" />
 </td>
 <td align="right">
-   <p><b> Hoy es:  <%:WeekdayName(Weekday(DateTime.Now()) - 1)%>, <%
+   <p><b> Hoy es:  <%:WeekdayName(Weekday(DateTime.Now()))%>, <%
                                                                      Dim fecha As Date
                                                                      fecha = Now()
                                                                      Response.Write(fecha.ToString("dd/MM/yyyy"))
