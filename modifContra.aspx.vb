@@ -17,6 +17,21 @@ Partial Class modifContra
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         legajo.Focus()
+
+        If Session("noActual") = "si" Then
+
+            Dim message As String = "La contraseña vieja que ingresó no coincide con la que tenía registrada. Vuelva a intentarlo."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("noActual")
+
+        End If
     End Sub
 
     Protected Sub btaceptar_Click(sender As Object, e As EventArgs) Handles btaceptar.Click
@@ -36,8 +51,8 @@ Partial Class modifContra
         oDataReader = cmd.ExecuteReader()
 
         If (Not oDataReader.HasRows) Then
-            Response.Write("<script>window.alert('No está dado de alta en el sistema.');</script>" +
-            "<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
+            Session("alta") = "existeLeg"
+            Response.Write("<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
             oDataReader.Close()
             con.Close()
         Else
@@ -54,12 +69,11 @@ Partial Class modifContra
                     cmd1.Parameters("Id_usuario").Value = legajo.Text
                     cmd1.ExecuteNonQuery()
 
-                    Response.Write("<script>window.alert('Su contraseña fue actualizada con éxito');</script>" +
-                    "<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
+                    Session("contrActual") = "si"
+                    Response.Write("<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
                 Else
-
-                    Response.Write("<script>window.alert('La contraseña vieja que ingresó no coincide con la que tenía registrada. Vuelva a intentarlo ');</script>" +
-                      "<script>window.setTimeout(location.href='modifContra.aspx', 2000);</script>")
+                    Session("noActual") = "si"
+                    Response.Write("<script>window.setTimeout(location.href='modifContra.aspx', 2000);</script>")
                 End If
             End While
 

@@ -6,6 +6,8 @@ Imports Microsoft.VisualBasic
 Partial Class cursos
     Inherits System.Web.UI.Page
 
+    Private Property HyperLink As Object
+
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Session("legajo") <> 0 Then
 
@@ -23,14 +25,26 @@ Partial Class cursos
 
 
 
-
-
-
+            While oDataReader.Read()
+                Dim row As TableRow
+                Dim cell1 As TableCell
+                Dim cell2 As TableCell
+                row = New TableRow()
+                cell1 = New TableCell()
+                cell2 = New TableCell()
+                cell1.Text = oDataReader(0)
+                cell1.HorizontalAlign = HorizontalAlign.Center
+                cell2.Text = oDataReader(1)
+                row.Cells.Add(cell1)
+                row.Cells.Add(cell2)
+                TablaCursos.Rows.Add(row)
+            End While
 
         Else
 
-            Response.Write("<script>window.alert('Debe ingresar con su usuario y contraseña ');</script>" +
-            "<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
+            Session("noHabilit") = "si"
+            Response.Write("<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
+
         End If
     End Sub
 End Class

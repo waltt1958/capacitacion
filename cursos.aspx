@@ -8,5 +8,15 @@
    
 
 
+    <asp:Table ID="TablaCursos" width="75%" HorizontalAlign="Center" BorderColor="#9900CC" BorderStyle="Solid" BorderWidth="3px" runat="server" GridLines="Both" Font-Bold="True" Font-Size="Large">
+            <asp:TableRow HorizontalAlign="Center" Font-Bold="true" Font-Size="X-Large" BorderStyle="Solid"> 
+                 <asp:TableCell Width="15%" HorizontalAlign="Center">Orden</asp:TableCell> 
+                 <asp:TableCell Width="85%" HorizontalAlign="Center">Curso</asp:TableCell> 
+            </asp:TableRow> 
+    </asp:Table>
+
+
+
 </asp:Content>
+
 

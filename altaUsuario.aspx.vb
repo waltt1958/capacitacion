@@ -17,6 +17,37 @@ Partial Class altaUsuario
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         legajo.Focus()
+
+        If Session("alta") = "si" Then
+
+            Dim message As String = "No está dado de alta. Para continuar ingrese los datos solicitados."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("alta")
+
+        End If
+
+        If Session("alta") = "existeLeg" Then
+
+            Dim message As String = "No está dado de alta. Para continuar ingrese los datos solicitados."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("alta")
+
+        End If
+
     End Sub
 
     Protected Sub btaceptar_Click(sender As Object, e As EventArgs) Handles btaceptar.Click
@@ -43,12 +74,13 @@ Partial Class altaUsuario
             cmd1.ExecuteNonQuery()
             legajo.Text = String.Empty
             aYnombre.Text = String.Empty
-            'Response.Write("<script type='text/javascript'> alert('Fue dado de alta exitosamente. Vuelva al inicio e ingrese')</script>")
-            Response.Write("<script>window.alert('Fue dado de alta exitosamente. Recuerde su contraseña');</script>" +
-                           "<script>window.setTimeout(location.href='Default.aspx', 2000);</script>")
+
+            Session("altaExit") = "si"
+            Response.Write("<script>window.setTimeout(location.href='Default.aspx', 2000);</script>")
         Else
 
-            Response.Write("<script type='text/javascript'> alert('El legajo ingresado ya existe')</script>")
+            Session("alta") = "existeLeg"
+            Response.Write("<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
             legajo.Text = String.Empty
             aYnombre.Text = String.Empty
 

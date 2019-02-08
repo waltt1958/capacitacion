@@ -17,6 +17,80 @@ Partial Class Index
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         legajo.Focus()
+        If Session("alta") = "si" Then
+
+            Dim message As String = "No está dado de alta. Para continuar ingrese los datos solicitados."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("alta")
+        End If
+
+        If Session("errorContr") = "si" Then
+
+            Dim message As String = "Ingresó una contraseña errónea. Vuelva a intentarlo."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("errorContr")
+
+        End If
+
+        If Session("altaExit") = "si" Then
+
+            Dim message As String = "Fue dado de alta exitosamente. Recuerde su contraseña."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("altaExit")
+
+        End If
+
+        If Session("contrActual") = "si" Then
+
+            Dim message As String = "Su contraseña fue actualizada con éxito."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("contrActual")
+
+        End If
+
+        If Session("noHabilit") = "si" Then
+
+            Dim message As String = "Debe ingresar con su usuario y contraseña."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("noHabilit")
+
+        End If
+
 
     End Sub
 
@@ -38,8 +112,8 @@ Partial Class Index
 
         If (Not oDataReader.HasRows) Then
 
-            Response.Write("<script>window.alert('No está dado de alta en el sistema.');</script>" +
-            "<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
+            Session("alta") = "si"
+            Response.Write("<script>window.setTimeout(location.href='altaUsuario.aspx', 2000);</script>")
             oDataReader.Close()
             con.Close()
 
@@ -55,9 +129,8 @@ Partial Class Index
                     Response.Write("<script>window.setTimeout(location.href='cursos.aspx', 2000);</script>")
 
                 Else
-
-                    Response.Write("<script>window.alert('La contraseña que ingresó no coincide con la que tenía registrada. Vuelva a intentarlo ');</script>" +
-                      "<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
+                    Session("errorContr") = "si"
+                    Response.Write("<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
                 End If
             End While
 
