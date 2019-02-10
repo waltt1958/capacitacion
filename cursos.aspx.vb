@@ -23,6 +23,8 @@ Partial Class cursos
             Dim cmd As New OleDbCommand(cadena, con)
             oDataReader = cmd.ExecuteReader()
 
+            GridView1.Columns(0).HeaderText = "Nro de curso"
+            GridView1.Columns(1).HeaderText = "Descripción del curso"
 
 
             While oDataReader.Read()

@@ -17,6 +17,22 @@
 
 
 
+    <asp:GridView ID="GridView1" runat="server" BorderWidth="3px" Font-Bold="True" Font-Size="Large" HorizontalAlign="Center" AutoGenerateColumns="False" BorderColor="Black" DataKeyNames="Id_curso" DataSourceID="SqlDataSource1" Height="167px" ShowHeaderWhenEmpty="True" Width="515px">
+        <Columns>
+            <asp:BoundField DataField="Id_curso" HeaderText="Id_curso" ReadOnly="True" SortExpression="Id_curso" />
+            <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
+        </Columns>
+        <EditRowStyle HorizontalAlign="Center" />
+        <HeaderStyle Font-Bold="True" Font-Size="X-Large" HorizontalAlign="Center" />
+        <RowStyle BorderStyle="Solid" />
+    </asp:GridView>
+
+
+
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:capacitacionConnectionString %>" ProviderName="<%$ ConnectionStrings:capacitacionConnectionString.ProviderName %>" SelectCommand="SELECT [Id_curso], [descripcion] FROM [cursos] ORDER BY [Id_curso]"></asp:SqlDataSource>
+
+
+
 </asp:Content>
 
 
