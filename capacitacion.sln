@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Web
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "capacitacion", ".", "{3A734DD8-9AB5-4452-BBC0-2638D62B86A3}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "capacitacion", ".", "{78C8EE8E-4416-4BC1-B154-C4DD746460C6}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/capacitacion"
@@ -26,8 +26,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A734DD8-9AB5-4452-BBC0-2638D62B86A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A734DD8-9AB5-4452-BBC0-2638D62B86A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C8EE8E-4416-4BC1-B154-C4DD746460C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C8EE8E-4416-4BC1-B154-C4DD746460C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
