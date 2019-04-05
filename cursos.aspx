@@ -20,6 +20,10 @@
     <asp:GridView ID="GridView1" runat="server" BorderWidth="1px" Font-Bold="True" Font-Size="Large" HorizontalAlign="Center" AutoGenerateColumns="False" BorderColor="#999999" DataKeyNames="Id_curso" DataSourceID="SqlDataSource1" Height="167px" ShowHeaderWhenEmpty="True" Width="561px" BackColor="White" BorderStyle="Solid" CellPadding="3" ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
+            <asp:BoundField DataField="Id_curso" HeaderText="Curso" ReadOnly="True" SortExpression="Id_curso">
+            <FooterStyle HorizontalAlign="Center" />
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
             <asp:HyperLinkField DataNavigateUrlFields="Id_curso" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFormatString="{0}.aspx" HeaderText="Realizar curso:" Text="Ingresar" SortExpression="Id_curso" >
 <ItemStyle HorizontalAlign="Center"></ItemStyle>
             </asp:HyperLinkField>
