@@ -47,6 +47,20 @@ Partial Class cursos
             Response.Write("<script>window.setTimeout(location.href='default.aspx', 2000);</script>")
 
         End If
+
+        If Session("cursosReal") = "si" Then
+
+            Dim message As String = "El curso seleccionado ya fue realizado por Uds. Seleccione otro curso."
+            Dim sb As New System.Text.StringBuilder()
+            sb.Append("<script type = 'text/javascript'>")
+            sb.Append("window.onload=function(){")
+            sb.Append("alert('")
+            sb.Append(message)
+            sb.Append("')};")
+            sb.Append("</script>")
+            ClientScript.RegisterClientScriptBlock(Me.GetType(), "alert", sb.ToString())
+            Session.Remove("alta")
+        End If
     End Sub
 
 
