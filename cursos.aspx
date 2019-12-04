@@ -20,6 +20,7 @@
     <asp:GridView ID="GridView1" runat="server" BorderWidth="1px" Font-Bold="True" Font-Size="Large" HorizontalAlign="Center" AutoGenerateColumns="False" BorderColor="#999999" DataKeyNames="Id_curso" DataSourceID="SqlDataSource1" Height="167px" ShowHeaderWhenEmpty="True" Width="561px" BackColor="White" BorderStyle="Solid" CellPadding="3" ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
+            <asp:CommandField ShowSelectButton="True" />
             <asp:BoundField DataField="Id_curso" HeaderText="Curso" ReadOnly="True" SortExpression="Id_curso">
             <FooterStyle HorizontalAlign="Center" />
             <ItemStyle HorizontalAlign="Center" />

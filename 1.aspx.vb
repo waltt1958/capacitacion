@@ -10,6 +10,7 @@ Partial Class _1
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         If Session("legajo") <= 0 Then
 
             Session("noHabilit") = "si"
@@ -37,9 +38,11 @@ Partial Class _1
                 Response.Write("<script>window.setTimeout(location.href='cursos.aspx', 2000);</script>")
                 oDataReader.Close()
                 con.Close()
+
             Else
 
-                'INCORPORAR LOS DATOS PARA EL RADIOBUTTON
+                Response.Write("aaaaaaaaaaaaaaaaaaaaaaaaaa")
+                Response.Write(Session("curso"))
 
             End If
 
