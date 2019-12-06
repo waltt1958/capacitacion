@@ -39,11 +39,6 @@ Partial Class _1
                 oDataReader.Close()
                 con.Close()
 
-            Else
-
-                Response.Write("aaaaaaaaaaaaaaaaaaaaaaaaaa")
-                Response.Write(Session("curso"))
-
             End If
 
         End If
@@ -51,4 +46,7 @@ Partial Class _1
     End Sub
 
 
+    Protected Sub levantaPreg_Selecting(sender As Object, e As SqlDataSourceSelectingEventArgs) Handles levantaPreg.Selecting
+
+    End Sub
 End Class

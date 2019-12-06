@@ -9,6 +9,7 @@ Partial Class cursos
     Private Property HyperLink As Object
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         If Session("legajo") <> 0 Then
 
             'Dim con As New OleDbConnection
@@ -65,6 +66,9 @@ Partial Class cursos
 
 
     Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridView1.SelectedIndexChanged
-        Session("curso") = GridView1.Rows(GridView1.SelectedIndex).Cells(1).Text
+
+        Session("curso") = GridView1.Rows(GridView1.SelectedIndex).Cells(0).Text
+        Response.Write("<script>window.setTimeout(location.href='" & Session("curso") & ".aspx', 2000);</script>")
+
     End Sub
 End Class
